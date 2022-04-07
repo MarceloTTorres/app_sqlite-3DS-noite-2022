@@ -1,3 +1,5 @@
+import 'package:app_sqlite/main.dart';
+import 'package:app_sqlite/view/AdicionarCarro.dart';
 import 'package:flutter/material.dart';
 
 class MenuLateral extends StatelessWidget {
@@ -17,7 +19,9 @@ class MenuLateral extends StatelessWidget {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Listagem()));
               },
             ),
             ListTile(
@@ -30,7 +34,7 @@ class MenuLateral extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AdicionarCarro()));
+                          builder: (context) => const AdicionarCarro()));
                 })
           ],
         ),

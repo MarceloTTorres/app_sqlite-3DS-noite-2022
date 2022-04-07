@@ -31,22 +31,21 @@ class _AlteraCarroState extends State<AlteraCarro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            const Text("Marca", style: TextStyle(fontSize: 20,)),
-            TextFormField(
-              keyboardType: TextInputType.name,
-              controller: marcaController,
-              style: const TextStyle(fontSize: 20),
-            )
-          ],
-        ),
-      )
-    );
+        body: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView(
+        children: [
+          const Text("Marca",
+              style: TextStyle(
+                fontSize: 20,
+              )),
+          TextFormField(
+            keyboardType: TextInputType.name,
+            controller: marcaController,
+            style: const TextStyle(fontSize: 20),
+          )
+        ],
+      ),
+    ));
   }
-}
-  @override
-  _AlteraCarroState createState() => _AlteraCarroState();
 }

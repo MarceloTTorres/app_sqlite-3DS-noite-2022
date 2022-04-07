@@ -1,6 +1,7 @@
 import 'package:app_sqlite/model/Carro.dart';
 import 'package:app_sqlite/provider/CarroProvider.dart';
-import 'package:app_sqlite/themes.dart';
+// import 'package:app_sqlite/themes.dart';
+import 'package:app_sqlite/view/AlteraCarro.dart';
 import 'package:app_sqlite/view/MenuLateral.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/services.dart';
 
 void main() {
   runApp(EasyDynamicThemeWidget(
-    child: Principal(),
+    child: const Principal(),
   ));
 }
 
@@ -19,10 +20,10 @@ class Principal extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       color: Colors.lightGreenAccent[700],
-      theme: lightThemeData,
-      darkTheme: darkThemeData,
+      // theme: lightThemeData,
+      // darkTheme: darkThemeData,
       themeMode: EasyDynamicTheme.of(context).themeMode,
-      home: Listagem(),
+      home: const Listagem(),
     );
   }
 }
@@ -71,13 +72,13 @@ class _ListagemState extends State<Listagem> {
             icon: const Icon(Icons.menu),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MenuLateral()));
+                  MaterialPageRoute(builder: (context) => const MenuLateral()));
             }),
         title: const Text('Listagem de Carros'),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: listaCarros.length > 0
+        child: listaCarros.isNotEmpty
             ? ListView.builder(
                 itemCount: listaCarros.length,
                 itemBuilder: (BuildContext ctxt, int index) {
@@ -89,10 +90,10 @@ class _ListagemState extends State<Listagem> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ListTile(
-                              title: carro.marca,
+                              title: Text(carro.marca),
                               subtitle: Text(
                                 "Modelo: ${carro.modelo} - Ano: ${carro.ano}\n"
-                                "Placa: ${carro.placa} - Valor: ${carro.valor}",
+                                "Placa: ${carro.placa} - Cor: ${carro.cor}",
                               ),
                               leading: const Icon(Icons.directions_car),
                             )
@@ -109,8 +110,7 @@ class _ListagemState extends State<Listagem> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    AlteraCarro(carro: carro)));
+                                builder: (context) => AlteraCarro(carro)));
                       } else {
                         //arrasta da direita para esquerda
                         //deleta o carro do BD
